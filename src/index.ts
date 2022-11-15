@@ -5,16 +5,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const authRoutes = require('./user/auth/route')
-// import routes 
-// import authRoute from "./user/auth/route"
-// import authRoute  from './user/auth/route';
-
-// express.application.prefix = express.Router.prefix = function (path: any, configure: any) {
-//     var router = express.Router();
-//     this.use(path, router);
-//     configure(router);
-//     return router;
-// };
 
 const app = express();
 const http = require('http');

@@ -42,13 +42,22 @@ async function login(req: any, res: any) {
     }
     try {
         if (user) {
-            const accessToken = jwt.sign({ user_id: user._id, email }, config.get("JWT_ACCESS_SECRET"), { expiresIn: config.get("JWT_ACCESS_TIME") });
+            const accessToken = jwt.sign(
+                {
+                    userId: user._id,
+                    email
+                },
+                JSON.stringify(config.get("JWT_ACCESS_SECRET")),
+                {
+                    expiresIn: config.get("JWT_ACCESS_TIME")
+                }
+            );
+
             await userSchema.updateOne(
-                { user_id: user._id },
+                { _id: user._id },
                 {
                     $set: {
                         accessToken: accessToken
-
                     }
                 },
             )
@@ -57,17 +66,26 @@ async function login(req: any, res: any) {
         return commonutils.sendSuccessResponse(req, res, { data: user, message: validateString.LOGIN_SUCCESSFULLY }, 200)
     } catch (error) {
         return commonutils.sendError(req, res, { error: error }, 409);
-
     }
 }
 
+async function registeredUserList(req: any, res: any) {
+    const userList = await userSchema.find();
+    return commonutils.sendSuccessResponse(req, res, { result: userList }, 200)
+}
+
 async function logout(req: any, res: any) {
-    
-    
+    const token_ = req.headers?.authorization?.split(' ')[1] ?? []
+    var decoded = jwt.decode(token_);
+    // console.log(decoded,222);
+
+
+
 }
 
 export default {
     register,
     login,
+    registeredUserList,
     logout
 }

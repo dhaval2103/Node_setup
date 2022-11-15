@@ -1,6 +1,6 @@
 {
     "PORT": 7010,
-    "JWT_ACCESS_SECRET": "b4f577d2aa9cc60f9e9912761c6a907067a3f6f4f241f3111d957b0486c73d04a0aaf1824507a609813232888c26ec7de01193afb100993e2cd7e6ab8b3a99d3",
-    "JWT_ACCESS_TIME" : "60m",
+    "JWT_ACCESS_SECRET": "thisismysecretkey",
+    "JWT_ACCESS_TIME" : "1m",
     "DB_CONN_STRING": "mongodb://127.0.0.1:27017/ecommerce"
 }
