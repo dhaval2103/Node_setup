@@ -1,0 +1,9 @@
+/node_modules
+/*.dio
+/uploads
+/.vscode
+build
+**/.DS_Store
+*.log
+/logger/
+/.idea/
