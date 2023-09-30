@@ -1,16 +1,30 @@
+import encryptedData from "../middleware/secure/encryptData";
+import decryptedData from "../middleware/secure/decryptData";
+import express, { NextFunction, Request, Response } from "express";
 
-const sendSuccessResponse = (req:any,res:any,data:any,statusCode:200) => {
-    return res.status(statusCode).json(data);
-}
-const sendErrorResponse =(req:any,res:any,data:any,statusCode:422)=>{
-    return res.status(statusCode).json(data);
+
+
+async function sendSuccess(req: Request, res: Response, data: any, statusCode = 200) {
+    if (req.headers.env === "test") {
+        return res.status(statusCode).send(data)
+    }
+
+    let encData = await encryptedData.EncryptedData(req, res, data)
+    return res.status(statusCode).send(encData)
 }
 
-const sendError = (req:any,res:any,data:any,statusCode:409)=>{
- return res.status(statusCode).json(data);
+
+async function sendError(req: Request, res: Response, data: any, statusCode = 422) {
+    if (req.headers.env === "test") {
+        return res.status(statusCode).send(data)
+    }
+
+    // let encData = await encryptedData.EncryptedData(req, res, data)
+    return res.status(statusCode).send(data)
 }
+
+
 export default {
-    sendSuccessResponse,
-    sendErrorResponse,
-    sendError
+    sendSuccess,
+    sendError,
 }

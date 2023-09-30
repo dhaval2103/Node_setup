@@ -15,12 +15,12 @@ app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 
 
-app.use('/user',authRoutes)
+app.use('/user', authRoutes)
 // db connect
 server.listen(config.get('PORT'), () => {
     console.log(`Server running on port ${config.get('PORT')}`);
     mongoose.connect(config.get('DB_CONN_STRING'), {
     }).then(() => {
-        console.log('Connected succefully');
+        console.log('Connected successfully');
     })
 });

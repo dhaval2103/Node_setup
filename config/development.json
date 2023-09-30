@@ -1,6 +1,19 @@
 {
-    "PORT": 7010,
+    "PORT": 8010,
     "JWT_ACCESS_SECRET": "thisismysecretkey",
-    "JWT_ACCESS_TIME" : "1m",
-    "DB_CONN_STRING": "mongodb://127.0.0.1:27017/ecommerce"
+    "JWT_REFRESH_SECRET": "thisismyresfreshsecretkey",
+    "JWT_ACCESS_TIME" : "10m",
+    "JWT_REFRESH_TIME" : "1d",
+    "DB_CONN_STRING": "mongodb+srv://admin:wmqFK2iTxhaNLlLI@cluster0.uolw6.mongodb.net/dhaval",
+
+    "API_KEY_ENC": "25432A462D4A614E645267556B586E32",
+    "API_KEY_DEC": "472D4B6150645367566B587032733576",
+    "API_ENCRYPT_VI_KEY": "7A24432646294A40",
+    "API_DECRYPT_VI_KEY": "2A462D4A614E6452",
+
+    "OUTER_KEY_USER": "67566B59703373367639792442264529",
+    "OUTER_KEY_PAYLOAD": "2D4A614E635266556A586E3272357538",
+
+    "REDIS_HOST": "127.0.0.1",
+    "REDIS_PORT": "6379"
 }
