@@ -38,7 +38,6 @@ async function register(req: any, res: any) {
 async function login(req: any, res: any) {
     const { email, password } = req.body
     const user = await userSchema.findOne({ email })
-    console.log('user', user);
 
     if (!user) {
         return commonutils.sendError(req, res, { message: validateString.VALID_EMAIL }, 422)
@@ -64,11 +63,13 @@ async function login(req: any, res: any) {
     const refreshToken = await auth.generateRefreshToken(user);
 
     let data = { accessToken: accessToken, refreshToken: refreshToken }
+    console.log('data', data);
+
     await redisClient.lpush(user.toString(), JSON.stringify(data));
     res.cookie("accessToken", data.accessToken, { maxAge: 900000, httpOnly: true });
     res.cookie("refreshToken", data.refreshToken, { maxAge: 900000, httpOnly: true });
 
-    return commonutils.sendSuccess(req, res, { data, message: validateString.LOGIN_SUCCESSFULLY }, 200)
+    return commonutils.sendSuccess(req, res, { accessToken: accessToken, refreshToken: refreshToken }, 200)
 }
 
 async function registeredUserList(req: any, res: any) {

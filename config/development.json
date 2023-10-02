@@ -4,7 +4,7 @@
     "JWT_REFRESH_SECRET": "thisismyresfreshsecretkey",
     "JWT_ACCESS_TIME" : "10m",
     "JWT_REFRESH_TIME" : "1d",
-    "DB_CONN_STRING": "mongodb+srv://admin:wmqFK2iTxhaNLlLI@cluster0.uolw6.mongodb.net/dhaval",
+    "DB_CONN_STRING": "mongodb://localhost:27017/dhaval",
 
     "API_KEY_ENC": "25432A462D4A614E645267556B586E32",
     "API_KEY_DEC": "472D4B6150645367566B587032733576",
